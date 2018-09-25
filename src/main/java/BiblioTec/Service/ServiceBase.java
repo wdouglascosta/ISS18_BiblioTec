@@ -30,12 +30,12 @@ public abstract class ServiceBase<T, ID extends Serializable> implements BaseCRU
 
     @Override
     public List<T> getAll() {
-        return null;
+        return repository.findAll();
     }
 
     @Override
     public T getById(ID id) {
-        return null;
+        return repository.findOne(id);
     }
 
     @Override
