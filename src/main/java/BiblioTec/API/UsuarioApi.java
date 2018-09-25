@@ -7,10 +7,12 @@ package BiblioTec.API;
 
 import BiblioTec.Domain.Usuario;
 import BiblioTec.Service.ServiceBase;
+import com.sun.xml.internal.bind.v2.model.core.ID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 /**
  *
@@ -24,5 +26,14 @@ public class UsuarioApi extends ApiBase<Usuario, Long>{
     public UsuarioApi(ServiceBase<Usuario, Long> service) {
         super(service);
     }
-    
+
+    @RequestMapping(method = RequestMethod.POST, path = "/xablau")
+
+    public String nomedoMetodo(@RequestBody String param) {
+        System.out.println("aeee caraio");
+
+        return param;
+    }
+
+
 }
