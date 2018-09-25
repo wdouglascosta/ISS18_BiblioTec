@@ -1,10 +1,10 @@
 package BiblioTec.Repository;
 
-import BiblioTec.Domain.Person;
+import BiblioTec.Domain.Pessoa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface PersonRepository extends JpaRepository<Person, Long> {
+public interface PessoaRepository extends JpaRepository<Pessoa, Long> {
 }

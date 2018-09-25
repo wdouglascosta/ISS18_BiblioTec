@@ -2,9 +2,9 @@ package BiblioTec.Domain;
 
 import javax.persistence.*;
 
-@Entity(name = "Person")
-@Table(name = "Person")
-public abstract class Person {
+@MappedSuperclass
+@Table(name = "Pessoa")
+public abstract class Pessoa {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -123,7 +123,7 @@ public abstract class Person {
         return id;
     }
 
-    public Person(long id, String nome, String cpf, String rg, String sexo, String endereco, String dataNascimento, String email, String telefone, Boolean ativo, String tipoPessoa) {
+    public Pessoa(long id, String nome, String cpf, String rg, String sexo, String endereco, String dataNascimento, String email, String telefone, Boolean ativo, String tipoPessoa) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
@@ -137,7 +137,7 @@ public abstract class Person {
         this.tipoPessoa = tipoPessoa;
     }
 
-    public Person() {
+    public Pessoa() {
     }
     
     
