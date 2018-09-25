@@ -30,7 +30,7 @@ public class UsuarioApi extends ApiBase<Usuario, Long>{
     @RequestMapping(method = RequestMethod.POST, path = "/xablau")
 
     public String nomedoMetodo(@RequestBody String param) {
-        System.out.println("aeee caraio");
+        System.out.println("");
 
         return param;
     }
