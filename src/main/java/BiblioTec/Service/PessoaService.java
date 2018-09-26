@@ -13,6 +13,6 @@ public abstract class PessoaService<P extends Pessoa, R extends PessoaRepository
     }
 
     public List<P> findByNome(String nome) {
-        return repository.findByNome(nome);
+        return repository.findByNomeContainingIgnoreCase(nome);
     }
 }
