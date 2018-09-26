@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity(name = "Item")
 @Table(name = "Item")
-public abstract class Item {
+public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

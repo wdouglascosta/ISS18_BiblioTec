@@ -9,13 +9,14 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public abstract class ServiceBase<T, ID extends Serializable> implements BaseCRUD<T,ID> {
+public abstract class ServiceBase<T, ID extends Serializable, R extends JpaRepository<T, ID>> implements BaseCRUD<T,ID> {
 
-    protected final JpaRepository<T, ID> repository;
+    protected final R repository;
 
-    public ServiceBase(JpaRepository<T, ID> repository) {
+    public ServiceBase(R repository) {
         this.repository = repository;
     }
+    
     @Override
     public T save(T entity) {
         System.out.println("chegou no save do Service");
@@ -42,4 +43,6 @@ public abstract class ServiceBase<T, ID extends Serializable> implements BaseCRU
     public Optional<T> update(ID id, T entity) {
         return Optional.empty();
     }
+    
+
 }

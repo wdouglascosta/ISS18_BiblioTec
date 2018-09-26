@@ -2,8 +2,9 @@ package BiblioTec.Domain;
 
 import javax.persistence.*;
 
-@MappedSuperclass
 @Table(name = "Pessoa")
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Pessoa {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
