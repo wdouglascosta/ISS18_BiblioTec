@@ -1,10 +1,14 @@
 package BiblioTec.Repository;
 
-import BiblioTec.Domain.Person;
+import BiblioTec.Domain.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-
+/**
+ *
+ * @author andre
+ */
 @Repository
-public interface PersonRepository extends JpaRepository<Person, Long> {
+public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
+
 }
