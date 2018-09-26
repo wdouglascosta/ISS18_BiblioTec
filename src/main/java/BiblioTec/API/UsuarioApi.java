@@ -24,6 +24,18 @@ public class UsuarioApi extends PessoaApi<Usuario, UsuarioService> {
     public UsuarioApi(UsuarioService service) {
         super(service);
     }
+<<<<<<< HEAD
     
+=======
+
+    @RequestMapping(method = RequestMethod.POST, path = "/xablau")
+
+    public String nomedoMetodo(@RequestBody String param) {
+        System.out.println("");
+
+        return param;
+    }
+
+>>>>>>> afd93dd491240cbbcb8911692d51b7c0a04a2263
 
 }
