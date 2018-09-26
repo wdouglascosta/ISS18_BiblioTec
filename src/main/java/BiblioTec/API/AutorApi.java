@@ -5,8 +5,8 @@
  */
 package BiblioTec.API;
 
-import BiblioTec.Domain.Usuario;
-import BiblioTec.Service.UsuarioService;
+import BiblioTec.Domain.Autor;
+import BiblioTec.Service.AutorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.*;
  * @author andre
  */
 @RestController
-@RequestMapping(path="api/usuario", produces = MediaType.APPLICATION_JSON_VALUE)
-public class UsuarioApi extends PessoaApi<Usuario, UsuarioService> {
+@RequestMapping(path="api/autor", produces = MediaType.APPLICATION_JSON_VALUE)
+public class AutorApi extends PessoaApi<Autor, AutorService> {
 
     @Autowired
-    public UsuarioApi(UsuarioService service) {
+    public AutorApi(AutorService service) {
         super(service);
     }
     

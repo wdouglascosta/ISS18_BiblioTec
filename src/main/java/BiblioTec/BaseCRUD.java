@@ -14,5 +14,5 @@ public interface BaseCRUD<T, ID> {
         T getById(ID id);
 
         Optional<T> update(ID id, T entity);
-
+        
 }

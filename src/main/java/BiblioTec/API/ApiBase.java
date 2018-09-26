@@ -2,22 +2,22 @@ package BiblioTec.API;
 
 import BiblioTec.BaseCRUD;
 import BiblioTec.Service.ServiceBase;
+import java.io.Serializable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
-public abstract class ApiBase<T,ID extends Serializable> implements BaseCRUD<T,ID> {
+public abstract class ApiBase<T,ID extends Serializable,S extends ServiceBase> implements BaseCRUD<T,ID> {
 
-    ServiceBase<T, ID> service;
+    S service;
 
     @Autowired
-    public ApiBase(ServiceBase<T, ID> service) {
+    public ApiBase(S service) {
         this.service = service;
     }
 
@@ -44,7 +44,7 @@ public abstract class ApiBase<T,ID extends Serializable> implements BaseCRUD<T,I
     @Override
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     public T getById(@PathVariable ID id) {
-        T entity = service.getById(id);
+        T entity = (T) service.getById(id);
         return entity;
     }
 

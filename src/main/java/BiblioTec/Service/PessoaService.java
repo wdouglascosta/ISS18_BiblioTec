@@ -1,19 +1,18 @@
 package BiblioTec.Service;
 
 import BiblioTec.Domain.Pessoa;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Service;
+import BiblioTec.Repository.PessoaRepository;
+import java.util.List;
+import org.springframework.stereotype.Component;
 
-@Service
-public class PessoaService extends ServiceBase<Pessoa, Long> {
+@Component
+public abstract class PessoaService<P extends Pessoa, R extends PessoaRepository<P>> extends ServiceBase<P, Long, R> {
 
-    @Autowired
-    public PessoaService(JpaRepository<Pessoa, Long> repository) {
+    public PessoaService(R repository) {
         super(repository);
     }
 
-
-
-
+    public List<P> findByNome(String nome) {
+        return repository.findByNome(nome);
+    }
 }

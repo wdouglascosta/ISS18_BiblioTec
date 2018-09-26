@@ -1,7 +1,7 @@
 package BiblioTec.Service;
 
-import BiblioTec.Domain.Usuario;
-import BiblioTec.Repository.UsuarioRepository;
+import BiblioTec.Domain.Autor;
+import BiblioTec.Repository.AutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
  * @author andre
  */
 @Service
-public class UsuarioService extends PessoaService<Usuario, UsuarioRepository> {
+public class AutorService extends PessoaService<Autor, AutorRepository> {
 
     @Autowired
-    public UsuarioService(UsuarioRepository repository) {
+    public AutorService(AutorRepository repository) {
         super(repository);
     }
 }
