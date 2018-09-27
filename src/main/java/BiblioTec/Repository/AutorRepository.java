@@ -1,5 +1,6 @@
 package BiblioTec.Repository;
 
+import BiblioTec.Domain.Autor;
 import BiblioTec.Domain.Usuario;
 import org.springframework.stereotype.Repository;
 
@@ -8,6 +9,6 @@ import org.springframework.stereotype.Repository;
  * @author andre
  */
 @Repository
-public interface UsuarioRepository extends PessoaRepository<Usuario> {
+public interface AutorRepository extends PessoaRepository<Autor> {
 
 }

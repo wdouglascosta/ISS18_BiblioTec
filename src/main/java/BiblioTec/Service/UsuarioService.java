@@ -1,8 +1,8 @@
 package BiblioTec.Service;
 
 import BiblioTec.Domain.Usuario;
+import BiblioTec.Repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 /**
@@ -10,11 +10,18 @@ import org.springframework.stereotype.Service;
  * @author andre
  */
 @Service
-public class UsuarioService extends ServiceBase<Usuario, Long> {
+public class UsuarioService extends PessoaService<Usuario, UsuarioRepository> {
 
     @Autowired
-    public UsuarioService(JpaRepository<Usuario, Long> repository) {
+    public UsuarioService(UsuarioRepository repository) {
         super(repository);
     }
+
+
+    public boolean hasData(){
+        return repository.count() > 0;
+    }
+    
+    
 
 }

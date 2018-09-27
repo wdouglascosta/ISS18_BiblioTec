@@ -1,15 +1,15 @@
 package BiblioTec.Service;
 
 import BiblioTec.Domain.Item;
+import BiblioTec.Repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ItemService extends ServiceBase<Item, Long> {
+public class ItemService extends ServiceBase<Item, Long, ItemRepository> {
 
     @Autowired
-    public ItemService(JpaRepository<Item, Long> repository) {
+    public ItemService(ItemRepository repository) {
         super(repository);
     }
 }
