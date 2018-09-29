@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ItemService extends ServiceBase<Item, Long, ItemRepository> {
+public class ItemService<I extends Item, R extends ItemRepository<I>> extends ServiceBase<I, Long, R> {
 
     @Autowired
-    public ItemService(ItemRepository repository) {
+    public ItemService(R repository) {
         super(repository);
     }
 
@@ -17,5 +17,7 @@ public class ItemService extends ServiceBase<Item, Long, ItemRepository> {
         return repository.count() > 0;
     }
 
-
+    public List<I> findByNome(String nome) {
+        return repository.findByNomeContainingIgnoreCase(nome);
+    }
 }
