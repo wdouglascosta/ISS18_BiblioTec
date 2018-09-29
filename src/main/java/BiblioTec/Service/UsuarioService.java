@@ -23,5 +23,9 @@ public class UsuarioService extends PessoaService<Usuario, UsuarioRepository> {
     }
     
     
-
+    
+    public void removerInadimplencia(Long id){
+        Usuario u = repository.findOne(id);
+        u.setDetalhesInadimplencia("Nenhuma inadimplencia");
+    }
 }
