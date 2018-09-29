@@ -13,7 +13,7 @@ import javax.persistence.Table;
  * @author andre
  */
 @Entity
-@Table(name = "Usuario")
-public class Autor extends Pessoa{
-    
+@Table(name = "Administrador")
+public class Administrador extends Pessoa{
+
 }

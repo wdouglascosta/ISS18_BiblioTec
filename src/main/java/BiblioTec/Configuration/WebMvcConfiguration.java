@@ -14,6 +14,7 @@ import org.springframework.web.servlet.config.annotation.ContentNegotiationConfi
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import java.util.List;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 @Configuration
 public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
@@ -68,5 +69,11 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
         return jsonConverter;
     }
 
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**").allowedOrigins("*").allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD");
+        super.addCorsMappings(registry);
+    }
+    
 }
 

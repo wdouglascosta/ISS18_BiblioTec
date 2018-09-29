@@ -26,7 +26,7 @@ public abstract class ServiceBase<T, ID extends Serializable, R extends JpaRepos
 
     @Override
     public void delete(ID id) {
-
+        repository.delete(id);
     }
 
     @Override
