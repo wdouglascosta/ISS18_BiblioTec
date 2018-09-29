@@ -12,4 +12,10 @@ public class ItemService extends ServiceBase<Item, Long, ItemRepository> {
     public ItemService(ItemRepository repository) {
         super(repository);
     }
+
+    public boolean hasData(){
+        return repository.count() > 0;
+    }
+
+
 }
