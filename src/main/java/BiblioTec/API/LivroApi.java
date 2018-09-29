@@ -1,7 +1,7 @@
 package BiblioTec.API;
 
-import BiblioTec.Domain.Usuario;
-import BiblioTec.Service.UsuarioService;
+import BiblioTec.Domain.Livro;
+import BiblioTec.Service.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

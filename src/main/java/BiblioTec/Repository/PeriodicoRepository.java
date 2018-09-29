@@ -1,6 +1,6 @@
 package BiblioTec.Repository;
 
-import BiblioTec.Domain.Usuario;
+import BiblioTec.Domain.Periodico;
 import org.springframework.stereotype.Repository;
 
 @Repository

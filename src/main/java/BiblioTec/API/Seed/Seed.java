@@ -17,6 +17,7 @@ class Seed implements ApplicationListener<ContextRefreshedEvent> {
 
     @Autowired
     private UsuarioSeed usuarioSeed;
+    private LivroSeed livroSeed;
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
@@ -36,6 +37,7 @@ class Seed implements ApplicationListener<ContextRefreshedEvent> {
     private List<AppSeed> seeds(){
         List<AppSeed> list = new LinkedList<>();
         list.add(usuarioSeed);
+        list.add(livroSeed);
         return list;
     }
 }

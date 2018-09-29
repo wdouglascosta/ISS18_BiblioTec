@@ -1,7 +1,7 @@
 package BiblioTec.Service;
 
-import BiblioTec.Domain.Balconista;
-import BiblioTec.Repository.BalconistaRepository;
+import BiblioTec.Domain.Periodico;
+import BiblioTec.Repository.PeriodicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
