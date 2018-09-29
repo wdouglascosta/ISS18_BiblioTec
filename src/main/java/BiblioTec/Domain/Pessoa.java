@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Table(name = "Pessoa")
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Pessoa {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -49,11 +49,12 @@ public abstract class Pessoa {
     }
 
     public String getCpf() {
-        return cpf;
+        return (cpf.substring(0, 3)+"."+cpf.substring(3, 6)+"."+cpf.substring(6, 9)+"-"+cpf.substring(9, 11));
+        
     }
 
     public void setCpf(String cpf) {
-        this.cpf = cpf;
+        this.cpf = cpf.replaceAll("[^0-9]", "");
     }
 
     public String getRg() {
