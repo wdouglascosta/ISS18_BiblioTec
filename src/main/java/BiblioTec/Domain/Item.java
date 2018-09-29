@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity(name = "Item")
 @Table(name = "Item")
-public class Item {
+public abstract class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -138,12 +138,14 @@ public class Item {
         this.status = status;
     }
 
-    public Item(String nome, ItemStatus status, String autor, String editora, String origem, int edicao, int volume, int anoPublicacao, int numPaginas, float valorMultaDiaAtraso) {
+    public Item(Long id, String nome, ItemStatus status, String autor, String editora, String origem, String motivoInativacao, int edicao, int volume, int anoPublicacao, int numPaginas, float valorMultaDiaAtraso) {
+        this.id = id;
         this.nome = nome;
         this.status = status;
         this.autor = autor;
         this.editora = editora;
         this.origem = origem;
+        this.motivoInativacao = motivoInativacao;
         this.edicao = edicao;
         this.volume = volume;
         this.anoPublicacao = anoPublicacao;
@@ -151,6 +153,21 @@ public class Item {
         this.valorMultaDiaAtraso = valorMultaDiaAtraso;
     }
 
+    /*
+        public Item(long id, String nome, ItemStatus status, String autor, String editora, String origem, int edicao, int volume, int anoPublicacao, int numPaginas, float valorMultaDiaAtraso) {
+            this.id = id;
+            this.nome = nome;
+            this.status = status;
+            this.autor = autor;
+            this.editora = editora;
+            this.origem = origem;
+            this.edicao = edicao;
+            this.volume = volume;
+            this.anoPublicacao = anoPublicacao;
+            this.numPaginas = numPaginas;
+            this.valorMultaDiaAtraso = valorMultaDiaAtraso;
+        }
+        */
     public Item() {
     }
 }

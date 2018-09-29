@@ -7,11 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping(value = "/api/Item", produces = MediaType.APPLICATION_JSON_VALUE)
-public class ItemApi<I extends Item, S extends ItemService> extends ApiBase<I, Long, S> {
+public abstract class ItemApi<I extends Item, S extends ItemService> extends ApiBase<I, Long, S> {
 
-    @Autowired
     public ItemApi(S service) {
         super(service);
     }
@@ -24,12 +21,12 @@ public class ItemApi<I extends Item, S extends ItemService> extends ApiBase<I, L
 
     @RequestMapping(method = RequestMethod.GET, path = "/autor/{autor}")
     public I getByAutor(@PathVariable("autor") String autor) {
-        return (I) service.findByRg(autor);
+        return (I) service.findByAutor(autor);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/editora/{editora}")
-    public I getByRg(@PathVariable("editora") String editora) {
-        return (I) service.findByRg(editora);
+    @RequestMapping(method = RequestMethod.GET, path = "/id/{id}")
+    public I getById(@PathVariable("id") long id) {
+        return (I) service.findById(id);
     }
 
     /*

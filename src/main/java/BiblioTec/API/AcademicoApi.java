@@ -1,0 +1,20 @@
+package BiblioTec.API;
+
+import BiblioTec.Domain.Usuario;
+import BiblioTec.Service.UsuarioService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+
+
+@RestController
+@RequestMapping(path="api/academico", produces = MediaType.APPLICATION_JSON_VALUE)
+public class AcademicoApi extends ItemApi<Academico, AcademicoService> {
+
+    @Autowired
+    public AcademicoApi(AcademicoService service) {
+        super(service);
+
+    }
+
+}
