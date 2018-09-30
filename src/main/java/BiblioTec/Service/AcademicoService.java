@@ -12,4 +12,8 @@ public class AcademicoService extends ItemService<Academico, AcademicoRepository
     public AcademicoService(AcademicoRepository repository) {
         super(repository);
     }
+
+    public boolean hasData() {
+        return repository.count() > 0;
+    }
 }

@@ -8,9 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Random;
 
 @Component
 public class LivroSeed implements AppSeed {
+    private static final Random random = new Random(1);
     @Autowired
     private LivroService service;
 
@@ -30,6 +33,22 @@ public class LivroSeed implements AppSeed {
         livro1.setNumPaginas(354);
         livro1.setStatus(ItemStatus.DISPONIVEL);
 
+        Livro book = new Livro();
+        List<Livro> inteligentInstances = VicAutoSeed.getInteligentInstances(book, 100);
+
+        for (Livro livro : inteligentInstances) {
+            if (livro.getStatus().equals(ItemStatus.INATIVADO)){
+                livro.setMotivoInativacao(getmotivo());
+            } else {
+                livro.setMotivoInativacao("");
+            }
+            service.save(livro);
+
+        }
         service.save(livro1);
+    }
+
+    private String getmotivo() {
+        return MotivosInativacao.values()[random.nextInt(MotivosInativacao.values().length)].toString();
     }
 }
