@@ -17,11 +17,12 @@ public abstract class ItemApi<I extends Item, S extends ItemService> extends Api
         super(service);
     }
 
-//    @RequestMapping(method = RequestMethod.GET, path = "/nome/{nome}")
-//    public List<I> getByName(@PathVariable("nome") String nome) {
-//        List<I> entities = service.findByNome(nome);
-//        return entities;
-//    }
+    @RequestMapping(method = RequestMethod.GET, path = "/nome/{nome}")
+    public List<I> getByName(@PathVariable("nome") String nome) {
+        System.out.println("chegou aqui");
+        List<I> entities = service.getByName(nome);
+        return entities;
+    }
 //
 //    @RequestMapping(method = RequestMethod.GET, path = "/autor/{autor}")
 //    public I getByAutor(@PathVariable("autor") String autor) {

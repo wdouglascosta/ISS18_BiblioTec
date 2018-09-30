@@ -4,11 +4,8 @@ import javax.persistence.*;
 
 @Table(name = "Pessoa")
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Pessoa {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class Pessoa extends Model {
 
     @Column(name = "Nome")
     private String nome;

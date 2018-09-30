@@ -19,9 +19,8 @@ public abstract class ServiceBase<T, ID extends Serializable, R extends JpaRepos
     
     @Override
     public T save(T entity) {
-        System.out.println("chegou no save do Service");
         repository.save(entity);
-        return null;
+        return entity;
     }
 
     @Override
