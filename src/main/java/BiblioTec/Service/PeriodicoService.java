@@ -12,4 +12,8 @@ public class PeriodicoService extends ItemService<Periodico, PeriodicoRepository
     public PeriodicoService(PeriodicoRepository repository) {
         super(repository);
     }
+
+    public boolean hasData() {
+        return repository.count() > 0;
+    }
 }
