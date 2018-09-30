@@ -9,5 +9,4 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface UsuarioRepository extends PessoaRepository<Usuario> {
-
 }
