@@ -9,7 +9,14 @@ import org.springframework.stereotype.Service;
 public class LivroService extends ItemService<Livro, LivroRepository> {
 
     @Autowired
+    private LivroRepository repository;
+
+    @Autowired
     public LivroService(LivroRepository repository) {
         super(repository);
+    }
+
+    public boolean hasData() {
+        return repository.count() > 0;
     }
 }

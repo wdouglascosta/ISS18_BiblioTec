@@ -17,6 +17,7 @@ class Seed implements ApplicationListener<ContextRefreshedEvent> {
 
     @Autowired
     private UsuarioSeed usuarioSeed;
+    @Autowired
     private LivroSeed livroSeed;
 
     @Override

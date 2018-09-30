@@ -1,11 +1,15 @@
 package BiblioTec.Domain;
 
+import BiblioTec.Domain.Enums.ItemStatus;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Entity
+@Entity(name = "Livro")
 @Table(name = "Livro")
-public class Livro extends Item{
+public class Livro extends Item {
+    @Column(name = "ISBN")
     private String isbn;
 
     public Livro() {
@@ -19,8 +23,5 @@ public class Livro extends Item{
         this.isbn = isbn;
     }
 
-    public Livro(String isbn, long id, String nome, ItemStatus status, String autor, String editora, String origem, String motivoInativacao, int edicao, int volume, int anoPublicacao, int numPaginas, float valorMultaDiaAtraso) {
-        super(id,  nome, status, autor, editora, origem, motivoInativacao edicao, volume, anoPublicacao, numPaginas, valorMultaDiaAtraso);
-        this.isbn = isbn;
-    }
+
 }

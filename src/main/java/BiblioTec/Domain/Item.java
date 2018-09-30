@@ -1,5 +1,6 @@
 package BiblioTec.Domain;
 
+import BiblioTec.Domain.Enums.ItemOrigem;
 import BiblioTec.Domain.Enums.ItemStatus;
 
 import javax.persistence.*;
@@ -25,7 +26,8 @@ public abstract class Item {
     private String editora;
 
     @Column(name = "Origem")
-    private String origem;
+    @Enumerated(EnumType.STRING)
+    private ItemOrigem origem;
 
     @Column(name = "MotivoInativacao")
     private String motivoInativacao;
@@ -74,11 +76,11 @@ public abstract class Item {
         this.editora = editora;
     }
 
-    public String getOrigem() {
+    public ItemOrigem getOrigem() {
         return origem;
     }
 
-    public void setOrigem(String origem) {
+    public void setOrigem(ItemOrigem origem) {
         this.origem = origem;
     }
 
@@ -138,7 +140,7 @@ public abstract class Item {
         this.status = status;
     }
 
-    public Item(Long id, String nome, ItemStatus status, String autor, String editora, String origem, String motivoInativacao, int edicao, int volume, int anoPublicacao, int numPaginas, float valorMultaDiaAtraso) {
+    public Item(Long id, String nome, ItemStatus status, String autor, String editora, ItemOrigem origem, String motivoInativacao, int edicao, int volume, int anoPublicacao, int numPaginas, float valorMultaDiaAtraso) {
         this.id = id;
         this.nome = nome;
         this.status = status;
