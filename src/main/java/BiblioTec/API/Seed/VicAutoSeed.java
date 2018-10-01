@@ -1,6 +1,5 @@
 package BiblioTec.API.Seed;
 
-
 import BiblioTec.Domain.Enums.ItemOrigem;
 import BiblioTec.Domain.Enums.ItemStatus;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -45,7 +44,6 @@ public class VicAutoSeed {
         }
         String saltStr = s.toString();
         return saltStr;
-
     }
 
     public static Object[] getDataMuseWord(String s) {
@@ -58,14 +56,11 @@ public class VicAutoSeed {
         } catch (Exception e) {
             LOG.info("Problem in getDataMuseWord Query " + s, e);
         }
-
         return new Object[0];
-
     }
 
     public static void randomFill(Object obj) {
         try {
-
             Field[] declaredFields = obj.getClass().getDeclaredFields();
             for (Field f : declaredFields) {
                 if (f.isAnnotationPresent(Version.class)) {
@@ -100,7 +95,6 @@ public class VicAutoSeed {
         for (int i = 0; i < number; i++) {
             try {
                 Field[] declaredFields = exaple.getClass().getSuperclass().getDeclaredFields();
-
                 Object newInstance = clazz.newInstance();
                 for (Field f : declaredFields) {
                     if (f.isAnnotationPresent(Version.class)) {
@@ -108,50 +102,46 @@ public class VicAutoSeed {
                     }
                     if (!Modifier.isStatic(f.getModifiers())) {
                         f.setAccessible(true);
-                            Class<?> type = f.getType();
-                            if (type.equals(String.class)) {
-                                if (!searched.containsKey(f)) {
-                                    String s = new String("ml=" + translates(clazz.getSimpleName() + "+" + f.getName()) + "&max=" + (number + 3));
-                                    Object[] o = getDataMuseWord(s);
-                                    searched.put(f, o);
-                                }
-                                Object[] values = searched.get(f);
-                                if (values.length > 0) {
-                                    f.set(newInstance, values[(i + 3) % values.length]);
-                                } else {
-                                    f.set(newInstance, getRandomString(20));
-                                }
-                            } else if (type.equals(int.class)) {
-                                String s = f.getName();
-                                if (s.equalsIgnoreCase("anoPublicacao")){
-                                    f.set(newInstance, getRandomInteger(1800, 2018));
-                                } else if(f.getName().equalsIgnoreCase("numPaginas")){
-                                    f.set(newInstance, getRandomInteger(100, 1000));
-                                } else{
-                                    f.set(newInstance, getRandomInteger(0, 50));
-                                }
-
-                            } else if (type.isEnum()) {
-                                if (type.equals(ItemStatus.class)) {
-                                    f.set(newInstance, ItemStatus.values()[itemStatusIndex()]);
-                                } else if (type.equals(ItemOrigem.class)) {
-                                    f.set(newInstance, ItemOrigem.values()[itemOrigemIndex()]);
-                                }
-                            } else if (type.equals(float.class)) {
-                                f.set(newInstance, getRandomFloat(2, 12));
-                            } else {
-                                LOG.info("No random generator for " + type + " int class " + translates(exaple.getClass().getSimpleName()) + " " + translates(f.getName()));
+                        Class<?> type = f.getType();
+                        if (type.equals(String.class)) {
+                            if (!searched.containsKey(f)) {
+                                String s = new String("ml=" + translates(clazz.getSimpleName() + "+" + f.getName()) + "&max=" + (number + 3));
+                                Object[] o = getDataMuseWord(s);
+                                searched.put(f, o);
                             }
-
+                            Object[] values = searched.get(f);
+                            if (values.length > 0) {
+                                f.set(newInstance, values[(i + 3) % values.length]);
+                            } else {
+                                f.set(newInstance, getRandomString(20));
+                            }
+                        } else if (type.equals(int.class)) {
+                            String s = f.getName();
+                            if (s.equalsIgnoreCase("anoPublicacao")) {
+                                f.set(newInstance, getRandomInteger(1800, 2018));
+                            } else if (f.getName().equalsIgnoreCase("numPaginas")) {
+                                f.set(newInstance, getRandomInteger(100, 1000));
+                            } else {
+                                f.set(newInstance, getRandomInteger(0, 50));
+                            }
+                        } else if (type.isEnum()) {
+                            if (type.equals(ItemStatus.class)) {
+                                f.set(newInstance, ItemStatus.values()[itemStatusIndex()]);
+                            } else if (type.equals(ItemOrigem.class)) {
+                                f.set(newInstance, ItemOrigem.values()[itemOrigemIndex()]);
+                            }
+                        } else if (type.equals(float.class)) {
+                            f.set(newInstance, getRandomFloat(2, 12));
+                        } else {
+                            LOG.info("No random generator for " + type + " int class " + translates(exaple.getClass().getSimpleName()) + " " + translates(f.getName()));
+                        }
                     }
                 }
                 toReturn.add(newInstance);
             } catch (Exception ex) {
                 LOG.info("problem in getInteligentInstances" + exaple.getClass().getSimpleName(), ex);
-
             }
         }
-
         return toReturn;
     }
 
@@ -166,12 +156,9 @@ public class VicAutoSeed {
     public static List<List> subLists(int tamanhoMinimo, int tamanhoMaximo, Collection collection) {
         List<Object[]> subLists = new ArrayList<>();
         Object[] input = collection.toArray();
-
         for (int k = tamanhoMinimo; k <= tamanhoMaximo; k++) {
-
             int[] s = new int[k];                  // here we'll keep indices 
             // pointing to elements in input array
-
             if (k <= input.length) {
                 // first index sequence: 0, 1, 2, ...
                 for (int i = 0; (s[i] = i) < k - 1; i++) ;
@@ -206,10 +193,6 @@ public class VicAutoSeed {
         return result;
     }
 
-    public static void main(String args[]) {
-
-    }
-
     private static String translates(String p) {
         for (int i = 0; i < DICTIONARY.length; i += 2) {
             if (p.equalsIgnoreCase(DICTIONARY[i])) {
@@ -217,7 +200,6 @@ public class VicAutoSeed {
             }
         }
         return p;
-
     }
 
     public static String DICTIONARY[] = {
@@ -232,5 +214,4 @@ public class VicAutoSeed {
             "Academico+autor", "student+name",
             "Cliente+cidade", "city"
     };
-
 }
