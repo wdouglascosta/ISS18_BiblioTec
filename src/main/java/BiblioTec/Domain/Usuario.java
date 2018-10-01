@@ -8,7 +8,7 @@ import java.util.Date;
 @Table(name = "Usuario")
 public class Usuario extends Pessoa {
 
-    private String nomeUsuario;
+    /*private String nomeUsuario;
     private String senha;
     private Date ultimoAcesso;
 
@@ -29,7 +29,7 @@ public class Usuario extends Pessoa {
     }
     public void setUltimoAcesso(Date ultimoAcesso) {
         this.ultimoAcesso = ultimoAcesso;
-    }
+    }*/
 
     private String situacao;
 
