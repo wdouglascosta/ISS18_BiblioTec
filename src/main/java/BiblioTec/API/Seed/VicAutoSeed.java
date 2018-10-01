@@ -5,8 +5,6 @@ import BiblioTec.Domain.Enums.ItemOrigem;
 import BiblioTec.Domain.Enums.ItemStatus;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.lang.invoke.MethodHandles;
-import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.math.BigDecimal;
@@ -20,8 +18,6 @@ import java.util.Map;
 import java.util.Random;
 import javax.persistence.Version;
 
-import com.sun.deploy.util.ArrayUtil;
-import org.jfree.util.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
