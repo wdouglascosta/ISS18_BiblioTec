@@ -8,16 +8,10 @@ import java.util.Date;
 @Table(name = "Usuario")
 public class Usuario extends Pessoa {
 
-    @Id
-    @Column(name="id", nullable=false, unique=true)
-    private int id;
-    @Column(name="userName", nullable=false, unique=true)
     private String nomeUsuario;
-    @Column(name="password", nullable=false, unique=false)
     private String senha;
-    @Column(name="lastAccess", unique=true)
-    @Temporal(TemporalType.DATE)
     private Date ultimoAcesso;
+
     public String getNomeUsuario() {
         return nomeUsuario;
     }
