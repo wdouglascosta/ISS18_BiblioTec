@@ -7,6 +7,7 @@ import javax.persistence.*;
 
 @Entity(name = "Item")
 @Table(name = "Item")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Item extends Model {
 
     @Column(name = "Nome")

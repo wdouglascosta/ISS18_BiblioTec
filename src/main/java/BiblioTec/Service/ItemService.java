@@ -1,5 +1,7 @@
 package BiblioTec.Service;
 
+import BiblioTec.Domain.Enums.ItemOrigem;
+import BiblioTec.Domain.Enums.ItemStatus;
 import BiblioTec.Domain.Item;
 import BiblioTec.Repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,20 +18,41 @@ public abstract class ItemService<I extends Item, R extends ItemRepository<I>> e
         super(repository);
     }
 
-    public List<I> getAll(){
+    public List<I> getAll() {
         return repository.findAll();
     }
-    
-    
+
+
     public List<I> getAllItens() {
         return repository.findAll();
     }
 
-    public <I extends Item> List<Item> getByName(String nome){
-        return repository.findByNomeContaining(nome);
+    public List<Item> getByName(String nome) {
+        return repository.findByNomeContainingIgnoreCase(nome);
     }
 
-//    public List<I> findByNome(String nome) {
+    public List<Item> findByAnoPublicacaoGreaterThanEqualAndAndAtivoIsTrue(int ano){
+        return repository.findByAnoPublicacaoGreaterThanEqualAndAndAtivoIsTrue(ano);
+    }
+
+    public List<Item> findByAutorContainingIgnoreCaseAndAtivoIsTrue(String autor){
+        return repository.findByAutorContainingIgnoreCaseAndAtivoIsTrue(autor);
+    }
+
+    public List<Item> findByEditoraContainingIgnoreCaseAndAtivoIsTrue(String editora){
+        return repository.findByEditoraContainingIgnoreCaseAndAtivoIsTrue(editora);
+    }
+
+    public List<Item> findByOrigemAndAtivoIsTrue(ItemOrigem origem){
+        return repository.findByOrigemAndAtivoIsTrue(origem);
+    }
+
+    public List<Item> findByStatusAndAndAtivoIsTrue(ItemStatus status){
+        return repository.findByStatusAndAndAtivoIsTrue(status);
+    }
+
+
+    //    public List<I> findByNome(String nome) {
 //        return repository.findByNomeContainingIgnoreCase(nome);
 //    }
 //
