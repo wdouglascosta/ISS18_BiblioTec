@@ -6,38 +6,34 @@ import javax.persistence.*;
 @Table(name = "Pessoa")
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Pessoa{
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-
+public abstract class Pessoa extends Model {
     @Column(name = "Nome")
     private String nome;
 
     @Column(name = "CPF")
     private String cpf;
-    
+
     @Column(name = "RG")
     private String rg;
-    
+
     @Column(name = "Sexo")
     private String sexo;
-    
+
     @Column(name = "Endereco")
     private String endereco;
-    
+
     @Column(name = "DataNasc")
     private String dataNascimento;
-    
+
     @Column(name = "Email")
     private String email;
-    
+
     @Column(name = "Telefone")
     private String telefone;
-    
+
     @Column(name = "Ativo")
     private Boolean ativo;
-    
+
     @Column(name = "TipoPessoa")
     private String tipoPessoa;
 
@@ -50,8 +46,8 @@ public abstract class Pessoa{
     }
 
     public String getCpf() {
-        return (cpf.substring(0, 3)+"."+cpf.substring(3, 6)+"."+cpf.substring(6, 9)+"-"+cpf.substring(9, 11));
-        
+        return (cpf.substring(0, 3) + "." + cpf.substring(3, 6) + "." + cpf.substring(6, 9) + "-" + cpf.substring(9, 11));
+
     }
 
     public void setCpf(String cpf) {
@@ -142,8 +138,4 @@ public abstract class Pessoa{
 
     public Pessoa() {
     }
-    
-    
-    
-
 }

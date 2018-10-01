@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping(path="api/periodico", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path="/periodico", produces = MediaType.APPLICATION_JSON_VALUE)
 public class PeriodicoApi extends ItemApi<Periodico, PeriodicoService> {
 
     @Autowired

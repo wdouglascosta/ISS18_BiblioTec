@@ -7,10 +7,8 @@ import javax.persistence.*;
 
 @Entity(name = "Item")
 @Table(name = "Item")
-public abstract class Item {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class Item extends Model {
 
     @Column(name = "Nome")
     private String nome;
@@ -46,10 +44,6 @@ public abstract class Item {
 
     @Column(name = "ValorMultaDiaAtraso")
     private float valorMultaDiaAtraso;
-
-    public Long getId() {
-        return id;
-    }
 
     public String getNome() {
         return nome;
