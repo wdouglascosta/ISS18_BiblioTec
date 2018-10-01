@@ -18,7 +18,6 @@ public abstract class ServiceBase<T, ID extends Serializable> implements BaseCRU
     }
     @Override
     public T save(T entity) {
-        System.out.println("chegou no save do Service");
         repository.save(entity);
         return null;
     }

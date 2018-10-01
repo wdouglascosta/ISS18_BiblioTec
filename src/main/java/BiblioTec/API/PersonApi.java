@@ -16,4 +16,11 @@ public class PersonApi extends ApiBase<Person, Long> {
         super(service);
     }
 
+    @RequestMapping(value="/teste" )
+    public Person teste(){
+        Person person = new Person("Willian", "Leopardo", 12);
+        save(person);
+        return person;
+    }
+
 }
