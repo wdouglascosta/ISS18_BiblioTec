@@ -172,6 +172,8 @@ hs_err_pid*
 ## ignoring target file
 target/
 
+node_modules/
+node_modules/
 ### Maven ###
 pom.xml.tag
 pom.xml.releaseBackup

@@ -1,11 +1,20 @@
 package BiblioTec.Domain;
 
+import java.io.Serializable;
 import javax.persistence.*;
 
 @Table(name = "Pessoa")
 @Entity
+<<<<<<< HEAD
 //@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Pessoa extends Model {
+=======
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class Pessoa{
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+>>>>>>> 4afe3cc6f0d89354ee1487e85301ae5b6fdc3129
 
     @Column(name = "Nome")
     private String nome;

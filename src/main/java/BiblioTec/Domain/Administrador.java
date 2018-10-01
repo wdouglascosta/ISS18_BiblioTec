@@ -16,4 +16,4 @@ import javax.persistence.Table;
 @Table(name = "Administrador")
 public class Administrador extends Pessoa{
 
-}
+} 
