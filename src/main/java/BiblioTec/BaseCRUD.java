@@ -9,10 +9,12 @@ public interface BaseCRUD<T, ID> {
 
         void delete(ID id);
 
+        void deletePermanent(ID id);
+
         List<T> getAll();
 
         T getById(ID id);
 
         Optional<T> update(ID id, T entity);
-
+        
 }
