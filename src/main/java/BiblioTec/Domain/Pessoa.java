@@ -6,7 +6,23 @@ import javax.persistence.*;
 @Table(name = "Pessoa")
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Pessoa extends Model {
+public abstract class Pessoa {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    protected long id;
+
+    public long getId() {
+        return id;
+    }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
     @Column(name = "Nome")
     private String nome;
 
@@ -116,10 +132,6 @@ public abstract class Pessoa extends Model {
 
     public void setTipoPessoa(String tipoPessoa) {
         this.tipoPessoa = tipoPessoa;
-    }
-
-    public long getId() {
-        return id;
     }
 
     public Pessoa(long id, String nome, String cpf, String rg, String sexo, String endereco, String dataNascimento, String email, String telefone, Boolean ativo, String tipoPessoa) {

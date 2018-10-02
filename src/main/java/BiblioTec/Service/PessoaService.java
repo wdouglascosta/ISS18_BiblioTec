@@ -30,6 +30,13 @@ public abstract class PessoaService<P extends Pessoa, R extends PessoaRepository
         p.setAtivo(Boolean.FALSE);
         this.save(p);
     }
+
+    @Override
+    public void delete(Long id) {
+        Pessoa p = repository.findOne(id);
+        p.setAtivo(false);
+        this.save((P) p);
+    }
     
     @Override
     public P save(P entity) {

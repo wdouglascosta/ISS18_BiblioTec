@@ -8,7 +8,26 @@ import javax.persistence.*;
 @Entity(name = "Item")
 @Table(name = "Item")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Item extends Model {
+public abstract class Item {
+
+@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    protected long id;
+
+    @Column(name = "Ativo")
+    protected boolean ativo;
+
+    public long getId() {
+        return id;
+    }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
 
     @Column(name = "Nome")
     private String nome;
