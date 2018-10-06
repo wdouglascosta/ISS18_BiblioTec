@@ -1,7 +1,6 @@
 package BiblioTec.API;
 
 import BiblioTec.BaseCRUD;
-import BiblioTec.Domain.Model;
 import BiblioTec.Service.ServiceBase;
 import java.io.Serializable;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 import java.util.Optional;
 
-public abstract class ApiBase<T extends Model,ID extends Serializable,S extends ServiceBase> implements BaseCRUD<T,ID> {
+public abstract class ApiBase<T ,ID extends Serializable,S extends ServiceBase> implements BaseCRUD<T,ID> {
 
     S service;
 

@@ -1,7 +1,6 @@
 package BiblioTec.Service;
 
 import BiblioTec.BaseCRUD;
-import BiblioTec.Domain.Model;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public abstract class ServiceBase<T extends Model, ID extends Serializable, R extends JpaRepository<T, ID>> implements BaseCRUD<T,ID> {
+public abstract class ServiceBase<T , ID extends Serializable, R extends JpaRepository<T, ID>> implements BaseCRUD<T,ID> {
 
     protected final R repository;
 
@@ -24,12 +23,6 @@ public abstract class ServiceBase<T extends Model, ID extends Serializable, R ex
         return entity;
     }
 
-    @Override
-    public void delete(ID id) {
-        T t = repository.findOne(id);
-        t.setAtivo(false);
-        save(t);
-    }
 
     @Override
     public void deletePermanent(ID id) {

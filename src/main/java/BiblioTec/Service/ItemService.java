@@ -22,6 +22,13 @@ public abstract class ItemService<I extends Item, R extends ItemRepository<I>> e
         return repository.findAll();
     }
 
+    @Override
+    public void delete(Long id) {
+        I i = repository.findOne(id);
+        i.setAtivo(false);
+        save(i);
+    }
+
 
     public List<I> getAllItens() {
         return repository.findAll();
