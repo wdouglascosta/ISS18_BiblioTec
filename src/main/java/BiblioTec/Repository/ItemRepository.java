@@ -11,14 +11,15 @@ import java.util.List;
 @Repository
 public abstract interface ItemRepository<I extends Item> extends JpaRepository<I, Long> {
 
-    List<Item> findByNomeContainingIgnoreCase(String nome);
+    List<Item> findByNomeContainingIgnoreCaseAndAndAtivoIsTrue(String nome);
 
-    public List<Item> findByAnoPublicacaoGreaterThanEqualAndAndAtivoIsTrue(int ano);
-    public List<Item> findByAutorContainingIgnoreCaseAndAtivoIsTrue(String autor);
-    public List<Item> findByEditoraContainingIgnoreCaseAndAtivoIsTrue(String editora);
-    public List<Item> findByOrigemAndAtivoIsTrue(ItemOrigem Origem);
-    public List<Item> findByStatusAndAndAtivoIsTrue(ItemStatus status);
-    public Item findById(long id);
+
+    List<Item> findByAnoPublicacaoGreaterThanEqualAndAndAtivoIsTrue(int ano);
+    List<Item> findByAutorContainingIgnoreCaseAndAtivoIsTrue(String autor);
+    List<Item> findByEditoraContainingIgnoreCaseAndAtivoIsTrue(String editora);
+    List<Item> findByOrigemAndAtivoIsTrue(ItemOrigem Origem);
+    List<Item> findByStatusAndAndAtivoIsTrue(ItemStatus status);
+    Item findById(long id);
 
 
 
