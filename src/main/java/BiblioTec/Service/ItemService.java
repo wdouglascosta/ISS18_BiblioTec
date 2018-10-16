@@ -35,7 +35,7 @@ public abstract class ItemService<I extends Item, R extends ItemRepository<I>> e
     }
 
     public List<Item> getByName(String nome) {
-        return repository.findByNomeContainingIgnoreCase(nome);
+        return repository.findByNomeContainingIgnoreCaseAndAndAtivoIsTrue(nome);
     }
 
     public List<Item> findByAnoPublicacaoGreaterThanEqualAndAndAtivoIsTrue(int ano){

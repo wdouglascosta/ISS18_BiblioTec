@@ -10,12 +10,12 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Item {
 
-@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected long id;
 
     @Column(name = "Ativo")
-    protected boolean ativo;
+    protected boolean ativo = true;
 
     public long getId() {
         return id;
