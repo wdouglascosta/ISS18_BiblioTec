@@ -17,7 +17,7 @@ public abstract class Item {
     protected long id;
 
     @Column(name = "Ativo")
-    protected boolean ativo;
+    protected boolean ativo = true;
 
     public long getId() {
         return id;
