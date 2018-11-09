@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Entity(name = "Reserva")
 @Table(name = "Reserva")
-public class Reserva  {
+public class Reserva {
 
     public Reserva() {
     }
@@ -18,4 +18,10 @@ public class Reserva  {
 
     @Column(name = "data")
     private Date data = new Date();
+
+    @Column(name = "diaRetirada")
+    private Date diaRetirada;
+
+    @OneToOne
+    private Usuario usuario;
 }
