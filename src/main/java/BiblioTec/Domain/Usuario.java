@@ -21,7 +21,12 @@ public class Usuario extends Pessoa {
     @OneToMany
     private List<Emprestimo> emprestimos;
 
+    public Usuario(String nome, String cpf, String rg) {
+        super(nome, cpf, rg);
+    }
 
+  
+    
     public Usuario() {
     }
 
@@ -66,4 +71,54 @@ public class Usuario extends Pessoa {
         this.emprestimos = emprestimos;
     }
 
+    public static Builder build() {
+        return new Builder();
+    }
+
+    static final class Builder {
+
+        public CpfStep nome(String nome) {
+            return new PessoaStepBuilder(nome);
+        }
+
+        class PessoaStepBuilder implements RgStep, CpfStep, PessoaBuild {
+            private String nome;
+            private String cpf;
+            private String rg;
+
+            public PessoaStepBuilder(String nome) {
+                this.nome = nome;
+            }
+
+            public RgStep cpf(String cpf) {
+                this.cpf = cpf;
+                return this;
+            }
+
+            public PessoaBuild rg(String rg) {
+                this.rg = rg;
+                return this;
+            }
+
+
+
+            public Pessoa build() {
+                return new Usuario(nome, cpf, rg);
+            }
+        }
+
+
+        interface CpfStep {
+            RgStep cpf(String cpf);
+        }
+
+        interface RgStep {
+            PessoaBuild rg(String rg);
+        }
+
+        interface PessoaBuild {
+            Pessoa build();
+        }
+    }
+    
 }
