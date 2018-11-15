@@ -4,6 +4,8 @@ import BiblioTec.Domain.Enums.ItemOrigem;
 import BiblioTec.Domain.Enums.ItemStatus;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "Item")
 @Table(name = "Item")
@@ -63,6 +65,10 @@ public abstract class Item {
 
     @Column(name = "ValorMultaDiaAtraso")
     private float valorMultaDiaAtraso;
+
+    @OneToMany
+    @Column(name = "reservas")
+    private List<Reserva> reservas = new ArrayList<>();
 
     public String getNome() {
         return nome;
@@ -151,6 +157,14 @@ public abstract class Item {
 
     public void setStatus(ItemStatus status) {
         this.status = status;
+    }
+
+    public List<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReserva(Reserva reserva){
+        reservas.add(reserva);
     }
 
     public Item(Long id, String nome, ItemStatus status, String autor, String editora, ItemOrigem origem, String motivoInativacao, int edicao, int volume, int anoPublicacao, int numPaginas, float valorMultaDiaAtraso) {

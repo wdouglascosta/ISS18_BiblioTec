@@ -19,6 +19,7 @@ public class Emprestimo {
 
     @Id
     private Long ID;
+
     @OneToOne(mappedBy = "emprestimo")
     private Usuario usuario;
 
