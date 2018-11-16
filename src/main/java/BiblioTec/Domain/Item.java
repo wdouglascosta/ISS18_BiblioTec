@@ -165,6 +165,7 @@ public abstract class Item {
 
     public void setReserva(Reserva reserva){
         reservas.add(reserva);
+        status = ItemStatus.RESERVADO;
     }
 
     public Item(Long id, String nome, ItemStatus status, String autor, String editora, ItemOrigem origem, String motivoInativacao, int edicao, int volume, int anoPublicacao, int numPaginas, float valorMultaDiaAtraso) {
