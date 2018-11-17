@@ -4,13 +4,16 @@ import BiblioTec.Domain.Enums.ItemStatus;
 import BiblioTec.Domain.Livro;
 import BiblioTec.Domain.Reserva;
 import BiblioTec.Domain.Usuario;
+import BiblioTec.Service.UsuarioService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.Assert.assertEquals;
 
 public class ReservaTest {
+
 
 
     Usuario usuario = new Usuario();
@@ -22,6 +25,7 @@ public class ReservaTest {
         usuario.setNome("William Douglas");
         usuario.setCpf("08101203990");
         usuario.setEndereco("Av. Cerro Azul, 2835");
+
         livro.setNome("Harry Potter");
         livro.setStatus(ItemStatus.DISPONIVEL);
 
