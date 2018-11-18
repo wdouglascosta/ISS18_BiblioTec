@@ -23,7 +23,7 @@ public class AcademicoSeed implements AppSeed {
         }
 
         Academico academico = new Academico();
-        List<Academico> academicos = VicAutoSeed.getInteligentInstances(academico, 100);
+        List<Academico> academicos = VicAutoSeed.getInteligentInstances(academico, 2);
 
         for (Academico academico1 : academicos){
             if (academico1.getStatus().equals(ItemStatus.INATIVADO)){

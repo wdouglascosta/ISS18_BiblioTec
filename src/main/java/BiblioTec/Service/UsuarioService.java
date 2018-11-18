@@ -28,4 +28,8 @@ public class UsuarioService extends PessoaService<Usuario, UsuarioRepository> {
         Usuario u = repository.findOne(id);
         u.setDetalhesInadimplencia("Nenhuma inadimplencia");
     }
+
+    public String testService(String valor){
+        return valor + " - Ok!";
+    }
 }

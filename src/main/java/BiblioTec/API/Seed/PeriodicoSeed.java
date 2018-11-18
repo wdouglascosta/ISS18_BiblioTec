@@ -25,7 +25,7 @@ public class PeriodicoSeed implements AppSeed  {
         }
 
         Periodico periodico = new Periodico();
-        List<Periodico> periodicos = VicAutoSeed.getInteligentInstances(periodico, 100);
+        List<Periodico> periodicos = VicAutoSeed.getInteligentInstances(periodico, 2);
 
         for (Periodico periodico1 : periodicos){
             if (periodico1.getStatus().equals(ItemStatus.INATIVADO)){

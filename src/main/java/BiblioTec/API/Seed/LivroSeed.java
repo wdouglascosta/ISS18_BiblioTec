@@ -34,7 +34,7 @@ public class LivroSeed implements AppSeed {
         livro1.setStatus(ItemStatus.DISPONIVEL);
 
         Livro book = new Livro();
-        List<Livro> inteligentInstances = VicAutoSeed.getInteligentInstances(book, 100);
+        List<Livro> inteligentInstances = VicAutoSeed.getInteligentInstances(book, 2);
 
         for (Livro livro : inteligentInstances) {
             if (livro.getStatus().equals(ItemStatus.INATIVADO)){
