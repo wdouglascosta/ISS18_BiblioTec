@@ -1,0 +1,5 @@
+select round((select count(id) from item 
+where status = 'disponivel')*100/count(id), 1) as Porcentagem_Itens_disponivel, 
+count(id) as T_Itens,  
+(select count(id) from item where status = 'disponivel') as T_Disponiveis 
+from item

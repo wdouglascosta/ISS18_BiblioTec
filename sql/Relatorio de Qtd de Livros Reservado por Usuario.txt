@@ -1,0 +1,10 @@
+SELECT r.usuario as Usuario, count(i.reserva_id) as Qtd_Livros_Reservados
+
+FROM item i
+
+INNER JOIN reserva r ON 
+i.reserva_id = r.id_reserva
+
+where i.reserva_id between 1 and 13
+
+group by 1
