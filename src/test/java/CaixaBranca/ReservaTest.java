@@ -25,10 +25,8 @@ public class ReservaTest {
         usuario.setNome("William Douglas");
         usuario.setCpf("08101203990");
         usuario.setEndereco("Av. Cerro Azul, 2835");
-
         livro.setNome("Harry Potter");
         livro.setStatus(ItemStatus.DISPONIVEL);
-
     }
 
     @Test

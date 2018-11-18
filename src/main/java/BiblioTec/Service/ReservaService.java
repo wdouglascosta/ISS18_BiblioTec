@@ -14,4 +14,6 @@ public class ReservaService extends ServiceBase<Reserva, Long,ReservaRepository>
     public void delete(Long aLong) {
         repository.delete(aLong);
     }
+
+
 }
