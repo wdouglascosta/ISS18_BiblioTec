@@ -71,6 +71,11 @@ public class Usuario extends Pessoa {
         this.emprestimos = emprestimos;
     }
 
+    @Override
+    public String toString() {
+        return this.getNome() + " - id: " + this.getId();
+    }
+
     public static Builder build() {
         return new Builder();
     }
@@ -78,15 +83,16 @@ public class Usuario extends Pessoa {
     static final class Builder {
 
         public CpfStep nome(String nome) {
-            return new PessoaStepBuilder(nome);
+            return new UsuarioStepBuilder(nome);
         }
 
-        class PessoaStepBuilder implements RgStep, CpfStep, PessoaBuild {
+
+        class UsuarioStepBuilder implements RgStep, CpfStep, UsuarioBuild {
             private String nome;
             private String cpf;
             private String rg;
 
-            public PessoaStepBuilder(String nome) {
+            public UsuarioStepBuilder(String nome) {
                 this.nome = nome;
             }
 
@@ -95,16 +101,15 @@ public class Usuario extends Pessoa {
                 return this;
             }
 
-            public PessoaBuild rg(String rg) {
+            public UsuarioBuild rg(String rg) {
                 this.rg = rg;
                 return this;
             }
 
-
-
-            public Pessoa build() {
+            public Usuario build() {
                 return new Usuario(nome, cpf, rg);
             }
+
         }
 
 
@@ -113,12 +118,13 @@ public class Usuario extends Pessoa {
         }
 
         interface RgStep {
-            PessoaBuild rg(String rg);
+            UsuarioBuild rg(String rg);
         }
 
-        interface PessoaBuild {
+        interface UsuarioBuild {
             Pessoa build();
         }
     }
-    
+
+
 }
