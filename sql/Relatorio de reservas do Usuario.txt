@@ -1,0 +1,10 @@
+SELECT r.usuario as Usuario, 
+       i.nome as Livros_Reservados, 
+       r.data as Data_Reserva
+
+FROM item i
+
+INNER JOIN reserva r ON 
+i.reserva_id = r.id_reserva
+
+order by 1
