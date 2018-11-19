@@ -1,0 +1,8 @@
+select i.nome as Nome_Livro, i.autor as Autor, r.usuario as Usuario 
+FROM item i
+
+INNER JOIN reserva r ON i.reserva_id = r.id_reserva
+
+where status = 'emprestado'
+
+order by 1
