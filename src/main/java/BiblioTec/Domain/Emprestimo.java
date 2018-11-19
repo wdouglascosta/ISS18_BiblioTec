@@ -33,6 +33,22 @@ public class Emprestimo {
     @Column(name = "dataDevolucao")
     private Date dataDevolucao;
 
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+
+    public Date getDataDevolucao() {
+        return dataDevolucao;
+    }
+
+    public void setDataDevolucao(Date dataDevolucao) {
+        this.dataDevolucao = dataDevolucao;
+    }
+
     public Usuario getUsuario() {
         return usuario;
     }

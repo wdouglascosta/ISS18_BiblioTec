@@ -1,8 +1,9 @@
 package BiblioTec;
 
+import BiblioTec.Domain.Emprestimo;
 import BiblioTec.Domain.Livro;
-import BiblioTec.Domain.Reserva;
 import BiblioTec.Domain.Usuario;
+import BiblioTec.Service.EmprestimoService;
 import BiblioTec.Service.LivroService;
 import BiblioTec.Service.ReservaService;
 import BiblioTec.Service.UsuarioService;
@@ -18,7 +19,7 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-public class ReservaTest {
+public class EmprestimoTest {
     @Autowired
     private UsuarioService usuarioService;
 
@@ -26,7 +27,7 @@ public class ReservaTest {
     private LivroService livroService;
 
     @Autowired
-    private ReservaService reservaService;
+    private EmprestimoService emprestimoService;
 
     Usuario usuario = new Usuario();
     Livro livro = new Livro();
@@ -34,26 +35,25 @@ public class ReservaTest {
     @Before
     public void setup(){
 
-        usuario.setNome("Teste Teste");
-        usuario.setCpf("498.004.570-70");
+        usuario.setNome("Teste Teste Emprestimo");
+        usuario.setCpf("592.800.880-50");
         usuario = usuarioService.save(usuario);
 
-        livro.setNome("O livro de testes");
-        livro.setAutor("O autor de testes");
+
+        livro.setNome("O livro de testes para Emprestimo");
+        livro.setAutor("O autor de testes para Emprestimo");
         livro = livroService.save(livro);
     }
 
     @Test
-    public void criarReserva(){
-        Reserva reserva = new Reserva();
-        reserva.setLivro(livro);
-        reserva.setUsuario(usuario);
-        reserva = reservaService.save(reserva);
-        assertEquals(reserva.getLivro(), livro);
-        assertEquals(reserva.getUsuario(), usuario);
-        assertEquals(reservaService.getById(reserva.getId()).getUsuario().getNome(), reserva.getUsuario().getNome());
-        reservaService.delete(reserva.getId());
+    public void criarEmprestimo(){
+        Emprestimo emprestimo = new Emprestimo();
+        emprestimo.setLivro(livro);
+        emprestimo.setUsuario(usuario);
+        emprestimo = emprestimoService.save(emprestimo);
 
+        assertEquals(emprestimoService.getById(emprestimo.getID()).getLivro().getNome(), emprestimo.getLivro().getNome());
+        emprestimoService.delete(emprestimo.getID());
     }
 
     @After
@@ -61,7 +61,4 @@ public class ReservaTest {
         usuarioService.deletePermanent(usuario.getId());
         livroService.deletePermanent(livro.getId());
     }
-
-
-
 }

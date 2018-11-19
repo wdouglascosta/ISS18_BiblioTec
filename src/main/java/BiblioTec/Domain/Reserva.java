@@ -1,6 +1,7 @@
 package BiblioTec.Domain;
 
 import BiblioTec.BaseCRUD;
+import BiblioTec.Domain.Enums.ItemStatus;
 
 import javax.persistence.*;
 import java.text.DateFormat;
@@ -37,6 +38,22 @@ public class Reserva {
     @OneToOne
     private Livro livro;
 
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+
+    public Date getDiaRetirada() {
+        return diaRetirada;
+    }
+
+    public void setDiaRetirada(Date diaRetirada) {
+        this.diaRetirada = diaRetirada;
+    }
+
     public Livro getLivro() {
         return livro;
     }
@@ -46,6 +63,7 @@ public class Reserva {
     }
 
     public void setLivro(Livro livro) {
+        livro.setStatus(ItemStatus.RESERVADO);
         this.livro = livro;
     }
 
