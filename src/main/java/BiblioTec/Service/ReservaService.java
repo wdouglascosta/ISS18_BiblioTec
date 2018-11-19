@@ -27,6 +27,10 @@ public class ReservaService extends ServiceBase<Reserva, Long, ReservaRepository
     }
 
     public Reserva novaReserva(Livro livro, Usuario usuario) {
+        if (livro.getStatus().equals(ItemStatus.DISPONIVEL) || !usuario.getAtivo()){
+            return null;
+
+        }
         Reserva reserva = new Reserva();
         reserva.setUsuario(usuario);
         reserva.setLivro(livro);

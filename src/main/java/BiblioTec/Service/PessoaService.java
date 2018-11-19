@@ -44,8 +44,7 @@ public abstract class PessoaService<P extends Pessoa, R extends PessoaRepository
         System.out.println(entity);
         if (isCPF(entity.getCpf()) && !(repository.existsByCpf(entity.getCpf())) ) {
             entity.setAtivo(Boolean.TRUE);
-            repository.save(entity);
-            return null;
+            return repository.save(entity);
         } else {
             return null;
         }
