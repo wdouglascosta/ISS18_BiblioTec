@@ -1,6 +1,7 @@
 package BiblioTec.Service;
 
 import BiblioTec.Domain.Pessoa;
+import BiblioTec.Domain.Usuario;
 import BiblioTec.Repository.PessoaRepository;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -40,10 +41,10 @@ public abstract class PessoaService<P extends Pessoa, R extends PessoaRepository
     
     @Override
     public P save(P entity) {
+        System.out.println(entity);
         if (isCPF(entity.getCpf()) && !(repository.existsByCpf(entity.getCpf())) ) {
             entity.setAtivo(Boolean.TRUE);
-            repository.save(entity);
-            return null;
+            return repository.save(entity);
         } else {
             return null;
         }

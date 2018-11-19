@@ -1,6 +1,7 @@
 package BiblioTec.Domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,11 +16,11 @@ public class Usuario extends Pessoa {
 
     private String detalhesInadimplencia;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     private Emprestimo emprestimo;
 
-    @OneToMany
-    private List<Emprestimo> emprestimos;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Emprestimo> emprestimos = new ArrayList<>();
 
     public Usuario(String nome, String cpf, String rg) {
         super(nome, cpf, rg);
@@ -46,20 +47,12 @@ public class Usuario extends Pessoa {
         this.detalhesInadimplencia = detalhesInadimplencia;
     }
 
-    public Emprestimo getEmprestimo() {
-        return emprestimo;
-    }
-
-    public void setEmprestimo(Emprestimo emprestimo) {
-        this.emprestimo = emprestimo;
-    }
-
     public List<Emprestimo> getEmprestimos() {
         return emprestimos;
     }
 
-    public void setEmprestimos(List<Emprestimo> emprestimos) {
-        this.emprestimos = emprestimos;
+    public void setEmprestimos(Emprestimo emprestimo) {
+        this.emprestimos.add(emprestimo);
     }
 
 
@@ -77,7 +70,8 @@ public class Usuario extends Pessoa {
     }
 
     public static Builder build() {
-        return new Builder();
+        Builder builder = new Builder();
+        return builder;
     }
 
     static final class Builder {

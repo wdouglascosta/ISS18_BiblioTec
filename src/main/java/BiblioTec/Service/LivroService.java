@@ -12,6 +12,9 @@ public class LivroService extends ItemService<Livro, LivroRepository> {
     private LivroRepository repository;
 
     @Autowired
+    private ReservaService reservaService;
+
+    @Autowired
     public LivroService(LivroRepository repository) {
         super(repository);
     }
@@ -19,4 +22,5 @@ public class LivroService extends ItemService<Livro, LivroRepository> {
     public boolean hasData() {
         return repository.count() > 0;
     }
+
 }

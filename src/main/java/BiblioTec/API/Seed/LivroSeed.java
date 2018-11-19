@@ -33,6 +33,17 @@ public class LivroSeed implements AppSeed {
         livro1.setNumPaginas(354);
         livro1.setStatus(ItemStatus.DISPONIVEL);
 
+        Livro livro2 = new Livro();
+        livro2.setNome("O Auto da Compadecida");
+        livro2.setAutor("Ariano Suassuna");
+        livro2.setEdicao(7);
+        livro2.setEditora("Globo");
+        livro2.setAnoPublicacao(1978);
+        livro2.setNumPaginas(98);
+
+        service.save(livro1);
+        service.save(livro2);
+
         Livro book = new Livro();
         List<Livro> inteligentInstances = VicAutoSeed.getInteligentInstances(book, 2);
 
@@ -45,7 +56,6 @@ public class LivroSeed implements AppSeed {
             service.save(livro);
 
         }
-        service.save(livro1);
     }
 
     private String getmotivo() {

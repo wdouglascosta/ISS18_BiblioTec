@@ -3,13 +3,22 @@ package BiblioTec.Domain;
 import BiblioTec.BaseCRUD;
 
 import javax.persistence.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 @Entity(name = "Reserva")
 @Table(name = "Reserva")
 public class Reserva {
+    private static final DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
     public Reserva() {
+        dateFormat.format(this.data);
+        Calendar c = Calendar.getInstance();
+        c.setTime(this.data);
+        c.add(Calendar.DAY_OF_MONTH, 10);
+        this.diaRetirada = c.getTime();
     }
 
     @Id
@@ -25,7 +34,20 @@ public class Reserva {
     @OneToOne
     private Usuario usuario;
 
+    @OneToOne
+    private Livro livro;
 
+    public Livro getLivro() {
+        return livro;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setLivro(Livro livro) {
+        this.livro = livro;
+    }
 
     public Usuario getUsuario() {
         return usuario;

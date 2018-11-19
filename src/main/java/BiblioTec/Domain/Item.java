@@ -46,7 +46,7 @@ public abstract class Item {
 
     @Column(name = "Origem")
     @Enumerated(EnumType.STRING)
-    private ItemOrigem origem;
+    private ItemOrigem origem = ItemOrigem.COMPRA;
 
     @Column(name = "MotivoInativacao")
     private String motivoInativacao;
@@ -64,11 +64,9 @@ public abstract class Item {
     private int numPaginas;
 
     @Column(name = "ValorMultaDiaAtraso")
-    private float valorMultaDiaAtraso;
+    private float valorMultaDiaAtraso = 1.5f;
 
-    @OneToMany
-    @Column(name = "reservas")
-    private List<Reserva> reservas = new ArrayList<>();
+
 
     public String getNome() {
         return nome;
@@ -157,15 +155,6 @@ public abstract class Item {
 
     public void setStatus(ItemStatus status) {
         this.status = status;
-    }
-
-    public List<Reserva> getReservas() {
-        return reservas;
-    }
-
-    public void setReserva(Reserva reserva){
-        reservas.add(reserva);
-        status = ItemStatus.RESERVADO;
     }
 
     public Item(Long id, String nome, ItemStatus status, String autor, String editora, ItemOrigem origem, String motivoInativacao, int edicao, int volume, int anoPublicacao, int numPaginas, float valorMultaDiaAtraso) {
