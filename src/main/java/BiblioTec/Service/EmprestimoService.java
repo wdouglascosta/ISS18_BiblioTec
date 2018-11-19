@@ -9,6 +9,8 @@ import BiblioTec.Repository.EmprestimoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EmprestimoService extends ServiceBase<Emprestimo, Long, EmprestimoRepository> {
     public EmprestimoService(EmprestimoRepository repository) {
@@ -25,6 +27,10 @@ public class EmprestimoService extends ServiceBase<Emprestimo, Long, EmprestimoR
     @Override
     public void delete(Long aLong) {
         repository.delete(aLong);
+    }
+
+    public List<Emprestimo> getEmprestimosByUsuario(Usuario usuario){
+        return repository.findByUsuario(usuario);
     }
 
     public Emprestimo novoEmprestimo(Long livroId, Long usuarioId) {
@@ -44,7 +50,6 @@ public class EmprestimoService extends ServiceBase<Emprestimo, Long, EmprestimoR
 
         emprestimo.setUsuario(usuario);
         emprestimo = save(emprestimo);
-        usuario.getEmprestimos().add(emprestimo);
         usuarioService.save(usuario);
         return emprestimo;
     }

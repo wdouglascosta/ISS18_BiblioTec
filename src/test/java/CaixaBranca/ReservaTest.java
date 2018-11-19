@@ -29,26 +29,15 @@ public class ReservaTest {
         livro.setStatus(ItemStatus.DISPONIVEL);
     }
 
-//    @Test
-//    public void novaReserva() {
-//        Reserva reserva = new Reserva();
-//        reserva.setUsuario(usuario);
-//        reserva.setLivro(livro);
-//        assertEquals(reserva, reserva.getLivro());
-//        livro.getReservas().clear();
-//
-//    }
+    @Test
+    public void novaReserva() {
+        Reserva reserva = new Reserva();
+        reserva.setUsuario(usuario);
+        reserva.setLivro(livro);
+        assertEquals(reserva.getLivro(), livro);
+        assertEquals(livro.getStatus(), ItemStatus.RESERVADO);
+    }
 
-//    @Test
-//    public void verificaStatus() {
-//        assertEquals(livro.getStatus(), ItemStatus.DISPONIVEL);
-//        Reserva reserva = new Reserva();
-//        reserva.setUsuario(usuario);
-////        livro.setReserva(reserva);
-//        assertEquals(livro.getStatus(), ItemStatus.RESERVADO);
-//
-//
-//    }
 
 
     @After

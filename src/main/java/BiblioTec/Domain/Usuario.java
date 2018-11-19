@@ -1,7 +1,7 @@
 package BiblioTec.Domain;
 
-import javax.persistence.*;
-import java.util.ArrayList;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.List;
 
 /**
@@ -15,12 +15,6 @@ public class Usuario extends Pessoa {
     private String situacao;
 
     private String detalhesInadimplencia;
-
-    @OneToOne(fetch = FetchType.EAGER)
-    private Emprestimo emprestimo;
-
-    @OneToMany(fetch = FetchType.EAGER)
-    private List<Emprestimo> emprestimos = new ArrayList<>();
 
     public Usuario(String nome, String cpf, String rg) {
         super(nome, cpf, rg);
@@ -47,21 +41,11 @@ public class Usuario extends Pessoa {
         this.detalhesInadimplencia = detalhesInadimplencia;
     }
 
-    public List<Emprestimo> getEmprestimos() {
-        return emprestimos;
-    }
-
-    public void setEmprestimos(Emprestimo emprestimo) {
-        this.emprestimos.add(emprestimo);
-    }
-
 
     public Usuario(String situacao, String detalhesInadimplencia, Emprestimo emprestimo, List<Emprestimo> emprestimos, List reservas, long id, String nome, String cpf, String rg, String sexo, String endereco, String dataNascimento, String email, String telefone, Boolean ativo, String tipoPessoa) {
         super(id, nome, cpf, rg, sexo, endereco, dataNascimento, email, telefone, ativo, tipoPessoa);
         this.situacao = situacao;
         this.detalhesInadimplencia = detalhesInadimplencia;
-        this.emprestimo = emprestimo;
-        this.emprestimos = emprestimos;
     }
 
     @Override

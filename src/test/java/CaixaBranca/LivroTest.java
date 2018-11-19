@@ -1,4 +1,4 @@
-package CaixaPreta;
+package CaixaBranca;
 
 
 import BiblioTec.Domain.Livro;
@@ -24,11 +24,6 @@ public class LivroTest {
     public void criaLivro() {
         Livro livro = new Livro();
         livro.setNome("Harry Potter");
-
-//        livroService.save(livro);
-
-        //os metodos assert* são do JUnit, e servem para verificar o valor do objeto com o esperado,
-        //um teste só "passa" se os valores corresponderem
         assertEquals(livro.getNome(), "Harry Potter");
     }
 }

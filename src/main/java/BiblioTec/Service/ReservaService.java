@@ -9,6 +9,8 @@ import BiblioTec.Repository.ReservaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ReservaService extends ServiceBase<Reserva, Long, ReservaRepository> {
     public ReservaService(ReservaRepository repository) {
@@ -26,10 +28,13 @@ public class ReservaService extends ServiceBase<Reserva, Long, ReservaRepository
         repository.delete(aLong);
     }
 
+    public List<Reserva> getReservasByUsuario(Usuario usuario) {
+        return repository.findByUsuario(usuario);
+    }
+
     public Reserva novaReserva(Livro livro, Usuario usuario) {
         if (livro.getStatus().equals(ItemStatus.DISPONIVEL) || !usuario.getAtivo()){
             return null;
-
         }
         Reserva reserva = new Reserva();
         reserva.setUsuario(usuario);
