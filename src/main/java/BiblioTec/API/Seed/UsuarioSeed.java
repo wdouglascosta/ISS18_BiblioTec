@@ -23,7 +23,20 @@ public class UsuarioSeed implements AppSeed {
         usuario1.setCpf("081.012.039-90");
         usuario1.setEmail("wdouglascosta@gmail.com");
 
+        Usuario usuario = new Usuario();
+        usuario.setNome("Douglas Reservador");
+        usuario.setCpf("275.028.690-50");
+        usuario.setRg("55666556");
+
+        Usuario usuario3 = new Usuario();
+        usuario3.setNome("André Luan");
+        usuario3.setCpf("167.012.590-49");
+        usuario3.setRg("55666556");
+
+
         service.save(usuario1);
+        service.save(usuario);
+        service.save(usuario3);
     }
 
 

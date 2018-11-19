@@ -77,7 +77,8 @@ public class Usuario extends Pessoa {
     }
 
     public static Builder build() {
-        return new Builder();
+        Builder builder = new Builder();
+        return builder;
     }
 
     static final class Builder {
